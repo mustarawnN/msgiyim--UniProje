@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <title>Popüler Ürünler - M&S Giyim</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/styles.css">
+
+
+
+</head>
+
+<body id="ust">
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="logo" title="M&S Giyim / Türkiye">
+        </a>
+
+        <nav class="navbar">
+            <a href="kadin.html">Kadın</a>
+            <a href="erkek.html">Erkek</a>
+            <a href="favorilerim.html">Favorilerim</a>
+            <a href="tumurunler.html">Trendler</a>
+        </nav>
+
+        <div class="buttons">
+<input type="text" id="searchInput" placeholder="Ürün ara..." class="search-input">
+            <button class="nav-button" title="Ara">
+                <i class="fas fa-search"></i>
+            </button>
+
+            <button class="nav-button" title="Sepetim" onclick="window.location.href='sepetim.html'">
+                <i class="fas fa-shopping-cart"></i>
+            </button>
+<div class="dropdown"> 
+    <button class="nav-button" title="Kategoriler" id="kategoriButton">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="dropdown-content">
+        <a href="pantolonlar.html">
+            <img src="images/ManPANT1.jpg" alt="Pantolon" class="kategori-img"><p class="categoryP">Pantolonlar</p>
+            
+        </a>
+        
+        <a href="ceketler.html">
+            <img src="images/w7.jpg" alt="Ceket" class="kategori-img">
+            <p class="categoryP">Ceketler</p>
+        </a>
+        <a href="tisortler.html">
+            <img src="images/ManPOLO.jpg" alt="Tişört" class="kategori-img">
+            <p class="categoryP">Tişörtler</p>
+        </a>
+        <a href="montlar.html">
+            <img src="images/WomanMONT.jpg" alt="Mont" class="kategori-img">
+            <p class="categoryP">Montlar</p>
+        </a>
+        <a href="elbiseler.html">
+            <img src="images/woman5.jpg" alt="Elbise" class="kategori-img">
+            <p class="categoryP">Elbiseler</p>
+        </a>
+    </div>
+</div>
+        
+        </div>
+
+    </header>
+
+
+    <h1 id="hpopul">Popüler Ürünlerimize Göz Atın !</h1>
+    <p class="ppopul">M&S Giyim’in en sevilen parçalarıyla tanışın!
+        Kullanıcılarımızın en çok tercih ettiği ürünleri sizin için bir araya getirdik. Farklı tarzlara hitap eden bu
+        özel seçimler, sezonun trendlerini yansıtırken stilinize şıklık katacak. İlham veren kombinler için popüler
+        ürünlerimize göz atmayı unutmayın.</p>
+    <!-- Alışveriş Kartları Alanı -->
+    <div class="product-container">
+
+        <div class="product-card">
+            <img src="shoppingcardsWOMAN/WomanMONT.jpg" alt="Ürün Resmi" class="product-image">
+            <button class="favorite-icon" title="Favorilere Ekle">❤️</button>
+            <div class="product-info">
+                <h3 class="product-name">Rahat Kışlık Mont</h3>
+                <p class="product-price">₺1749,99 </p>
+            </div>
+
+            <div class="size-selector">
+                <label for="size">Beden:</label>
+                <select id="size" name="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <p id="star" title="Beğeni Oranı"> ⭐⭐⭐⭐⭐ </p>
+            </div>
+
+            <button class="add-to-cart-btn btn btn-dark"
+                onclick="addToCart('Rahat Kışlık Mont', '₺1749,99', 'shoppingcardsWOMAN/WomanMONT.jpg')">
+                Sepete Ekle
+            </button>
+
+            <button class="view-details-btn"
+                onclick="openProductDetail('Rahat Kışlık Mont', '₺1749,99', 'shoppingcardsWOMAN/WomanMONT.jpg','----- Bileşen: Dış: %100 Polyester, Astar: %100 Polyester -----Soğuk havalarda maksimum koruma sağlayan Rahat Kışlık Mont, hafif yapısıyla hareket özgürlüğü sunarken sıcak tutan dolgulu yapısıyla konfor sağlar. Suya dayanıklı yüzeyi ile yağmurlu havalarda da güvenle kullanılabilir.')">
+                Ürünü İncele
+            </button>
+
+            <p class="favorite-message" style="display: none; color: green;">Favorilerime Eklendi!</p>
+        </div>
+
+        <!-- Ürün Detaylarını Gösteren Modal -->
+        <div id="productDetailModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h3 id="modal-product-name"></h3>
+                <p id="modal-product-price"></p>
+
+                <!-- Resim ve açıklamanın yan yana yer alacağı container -->
+                <div class="modal-product-details">
+                    <img id="modal-product-image" class="modal-product-image" src="" alt="Ürün Detay Resmi">
+                    <p id="modal-product-description"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="shoppingcardsMAN/ManKumas1.jpg" alt="Ürün Resmi" class="product-image">
+            <button class="favorite-icon" title="Favorilere Ekle">❤️</button>
+            <div class="product-info">
+                <h3 class="product-name">Rahat Bej Kumaş Pantolon</h3>
+                <p class="product-price">₺1399,99 </p>
+            </div>
+
+            <div class="size-selector">
+                <label for="size">Beden:</label>
+                <select id="size" name="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <p id="star" title="Beğeni Oranı"> ⭐⭐⭐⭐⭐ </p>
+            </div>
+
+            <button class="add-to-cart-btn btn btn-dark"
+                onclick="addToCart('Rahat Bej Kumaş Pantolon', '₺1399,99', 'shoppingcardsMAN/ManKumas1.jpg')">
+                Sepete Ekle
+            </button>
+
+            <button class="view-details-btn"
+                onclick="openProductDetail('Rahat Bej Kumaş Pantolon', '₺1399,99', 'shoppingcardsMAN/ManKumas1.jpg','-----Bileşen: %70 Pamuk, %28 Viskon, %2 Elastan----- Hafif yapısı ve rahat kesimiyle yaz aylarının favorisi olacak bej kumaş pantolon, sade ama şık bir görünüm sunar. Açık tonları sayesinde birçok parçayla kolayca kombinlenebilir. Ofis şıklığından hafta sonu gezilerine kadar her ortamda kullanılabilir.')">
+                Ürünü İncele
+            </button>
+
+            <p class="favorite-message" style="display: none; color: green;">Favorilerime Eklendi!</p>
+        </div>
+
+        <!-- Ürün Detaylarını Gösteren Modal -->
+        <div id="productDetailModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h3 id="modal-product-name"></h3>
+                <p id="modal-product-price"></p>
+
+                <!-- Resim ve açıklamanın yan yana yer alacağı container -->
+                <div class="modal-product-details">
+                    <img id="modal-product-image" class="modal-product-image" src="" alt="Ürün Detay Resmi">
+                    <p id="modal-product-description"></p>
+                </div>
+            </div>
+        </div>
+        <!-- Diğer kartlar buraya eklenebilir -->
+        <div class="product-card">
+            <img src="shoppingcardsMAN/ManPOLO.jpg" alt="Ürün Resmi" class="product-image">
+            <button class="favorite-icon" title="Favorilere Ekle">❤️</button>
+            <div class="product-info">
+                <h3 class="product-name">Triko Polo Yaka T-Shirt</h3>
+                <p class="product-price">₺999,99 </p>
+            </div>
+
+            <div class="size-selector">
+                <label for="size">Beden:</label>
+
+                <select id="size" name="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <p id="star" title="Beğeni Oranı"> ⭐⭐⭐⭐⭐ </p>
+            </div>
+
+            <button class="add-to-cart-btn btn btn-dark"
+                onclick="addToCart('Triko Polo Yaka T-Shirt', '₺999,99', 'shoppingcardsMAN/ManPOLO.jpg')">
+                Sepete Ekle
+            </button>
+
+            <button class="view-details-btn"
+                onclick="openProductDetail('Triko Polo Yaka T-Shirt', '₺999,99', 'shoppingcardsMAN/ManPOLO.jpg','-----Bileşen: %50 Pamuk, %50 Akrilik----- Zarif dokusu ve polo yaka detayıyla klasik ve modern çizgiyi bir araya getiriyor. Triko kumaşı sayesinde hem serin havalarda hem ilkbahar aylarında ideal kullanım sağlar. Şıklığa önem veren erkekler için gardırobun vazgeçilmez parçalarından biri.')">
+                Ürünü İncele
+            </button>
+
+            <p class="favorite-message" style="display: none; color: green;">Favorilerime Eklendi!</p>
+        </div>
+
+        <!-- Ürün Detaylarını Gösteren Modal -->
+        <div id="productDetailModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h3 id="modal-product-name"></h3>
+                <p id="modal-product-price"></p>
+
+                <!-- Resim ve açıklamanın yan yana yer alacağı container -->
+                <div class="modal-product-details">
+                    <img id="modal-product-image" class="modal-product-image" src="" alt="Ürün Detay Resmi">
+                    <p id="modal-product-description"></p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="product-card">
+            <img src="shoppingcardsWOMAN/w2.jpg" alt="Ürün Resmi" class="product-image">
+            <button class="favorite-icon" title="Favorilere Ekle">❤️</button>
+            <div class="product-info">
+                <h3 class="product-name">Capri Siyah Pantolon</h3>
+                <p class="product-price">₺2249,99 </p>
+            </div>
+
+            <div class="size-selector">
+                <label for="size">Beden:</label>
+                <select id="size" name="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <p id="star" title="Beğeni Oranı"> ⭐⭐⭐⭐⭐ </p>
+            </div>
+
+            <button class="add-to-cart-btn btn btn-dark"
+                onclick="addToCart('Capri Siyah Pantolon', '₺2249,99', 'shoppingcardsWOMAN/w2.jpg')">
+                Sepete Ekle
+            </button>
+
+            <button class="view-details-btn"
+                onclick="openProductDetail('Capri Siyah Pantolon', '₺2249,99', 'shoppingcardsWOMAN/w2.jpg','-----Bileşen: %97 Pamuk, %3 Elastan----- Şıklığı ön planda tutanlar için özel olarak tasarlanan Capri Siyah Pantolon, bilek üstü boyu ve kürklü paça detayıyla fark yaratıyor. Topuklu ayakkabılarla gece kombinleri için, sneaker ile ise şık bir gündüz stili yaratmak mümkün.')">
+                Ürünü İncele
+            </button>
+
+            <p class="favorite-message" style="display: none; color: green;">Favorilerime Eklendi!</p>
+        </div>
+
+        <!-- Ürün Detaylarını Gösteren Modal -->
+        <div id="productDetailModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h3 id="modal-product-name"></h3>
+                <p id="modal-product-price"></p>
+
+                <!-- Resim ve açıklamanın yan yana yer alacağı container -->
+                <div class="modal-product-details">
+                    <img id="modal-product-image" class="modal-product-image" src="" alt="Ürün Detay Resmi">
+                    <p id="modal-product-description"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="shoppingcardsWOMAN/w8.jpg" alt="Ürün Resmi" class="product-image">
+            <button class="favorite-icon" title="Favorilere Ekle">❤️</button>
+            <div class="product-info">
+                <h3 class="product-name">Bordo Uzun Kol Fit Kazak</h3>
+                <p class="product-price">₺1290,99</p>
+            </div>
+
+            <div class="size-selector">
+                <label for="size">Beden:</label>
+                <select id="size" name="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <p id="star" title="Beğeni Oranı"> ⭐⭐⭐⭐⭐ </p>
+            </div>
+
+            <button class="add-to-cart-btn btn btn-dark"
+                onclick="addToCart('Bordo Uzun Kol Fit Kazak', '₺1290,99', 'shoppingcardsWOMAN/w8.jpg')">
+                Sepete Ekle
+            </button>
+
+            <button class="view-details-btn"
+                onclick="openProductDetail('Bordo Uzun Kol Fit Kazak', '₺1290,99', 'shoppingcardsWOMAN/w8.jpg','-----Bileşen: %80 Pamuk, %20 Akrilik----- Vücudu saran yapısıyla kış kombinlerinin vazgeçilmezi olacak Bordo Uzun Kol Fit Kazak, pastel tonları ve kısa kesimiyle yüksek bel pantolon ya da eteklerle mükemmel uyum sağlar. Üzerine oversize montlarla kombinlenebilir.')">
+                Ürünü İncele
+            </button>
+
+            <p class="favorite-message" style="display: none; color: green;">Favorilerime Eklendi!</p>
+        </div>
+
+        <!-- Ürün Detaylarını Gösteren Modal -->
+        <div id="productDetailModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h3 id="modal-product-name"></h3>
+                <p id="modal-product-price"></p>
+
+                <!-- Resim ve açıklamanın yan yana yer alacağı container -->
+                <div class="modal-product-details">
+                    <img id="modal-product-image" class="modal-product-image" src="" alt="Ürün Detay Resmi">
+                    <p id="modal-product-description"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="shoppingcardsMAN/ManMont.jpg" alt="Ürün Resmi" class="product-image">
+            <button class="favorite-icon" title="Favorilere Ekle">❤️</button>
+            <div class="product-info">
+                <h3 class="product-name">%100 Kuş Tüyü Şişme Mont</h3>
+                <p class="product-price">₺4789,99 </p>
+            </div>
+
+            <div class="size-selector">
+                <label for="size">Beden:</label>
+                <select id="size" name="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <p id="star" title="Beğeni Oranı"> ⭐⭐⭐⭐⭐ </p>
+            </div>
+
+            <button class="add-to-cart-btn btn btn-dark"
+                onclick="addToCart('%100 Kuş Tüyü Şişme Mont', '₺4789,99', 'shoppingcardsMAN/ManMont.jpg')">
+                Sepete Ekle
+            </button>
+
+            <button class="view-details-btn"
+                onclick="openProductDetail('%100 Kuş Tüyü Şişme Mont', '₺4789,99', 'shoppingcardsMAN/ManMont.jpg','-----Bileşen: Dış Yüzey: %100 Polyester – Dolgu: %90 Kaz Tüyü, %10 Kaz Tüyü Tüyü----- Soğuk havalarda maksimum koruma sağlayan bu %100 kuş tüyü mont, hafif yapısına rağmen üstün ısı yalıtımı sunar. Şık ve sportif tasarımı ile şehir yaşamına uyum sağlarken, fonksiyonel yapısı sayesinde doğa aktivitelerinde de kullanılabilir. Geniş cepleri ve yüksek yakası ile pratik kullanım sağlar.')">
+                Ürünü İncele
+            </button>
+
+            <p class="favorite-message" style="display: none; color: green;">Favorilerime Eklendi!</p>
+        </div>
+
+        <!-- Ürün Detaylarını Gösteren Modal -->
+        <div id="productDetailModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h3 id="modal-product-name"></h3>
+                <p id="modal-product-price"></p>
+
+                <!-- Resim ve açıklamanın yan yana yer alacağı container -->
+                <div class="modal-product-details">
+                    <img id="modal-product-image" class="modal-product-image" src="" alt="Ürün Detay Resmi">
+                    <p id="modal-product-description"></p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="product-card">
+            <img src="shoppingcardsWOMAN/ww5.jpg" alt="Ürün Resmi" class="product-image">
+            <button class="favorite-icon" title="Favorilere Ekle">❤️</button>
+            <div class="product-info">
+                <h3 class="product-name">Baskılı T-Shirt</h3>
+                <p class="product-price">₺789,99 </p>
+            </div>
+
+            <div class="size-selector">
+                <label for="size">Beden:</label>
+                <select id="size" name="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <p id="star" title="Beğeni Oranı"> ⭐⭐⭐⭐⭐ </p>
+            </div>
+
+            <button class="add-to-cart-btn btn btn-dark"
+                onclick="addToCart('Baskılı T-Shirt', '₺789,99', 'shoppingcardsWOMAN/ww5.jpg')">
+                Sepete Ekle
+            </button>
+
+            <button class="view-details-btn"
+                onclick="openProductDetail('Baskılı T-Shirt', '₺789,99', 'shoppingcardsWOMAN/ww5.jpg','-----Bileşen: %100 Pamuk----- Tarzınızı yansıtan modern bir ifade sunan Baskılı T-Shirt, eğlenceli ve özgün tasarımıyla göz alıcıdır. Yüksek kaliteli baskısı uzun ömürlüdür. Jean pantolonlarla ya da eteklerle kombinlenerek enerjik bir görünüm oluşturur.')">
+                Ürünü İncele
+            </button>
+
+            <p class="favorite-message" style="display: none; color: green;">Favorilerime Eklendi!</p>
+        </div>
+
+        <!-- Ürün Detaylarını Gösteren Modal -->
+        <div id="productDetailModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h3 id="modal-product-name"></h3>
+                <p id="modal-product-price"></p>
+
+                <!-- Resim ve açıklamanın yan yana yer alacağı container -->
+                <div class="modal-product-details">
+                    <img id="modal-product-image" class="modal-product-image" src="" alt="Ürün Detay Resmi">
+                    <p id="modal-product-description"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="shoppingcardsMAN/ManCeket2.jpg" alt="Ürün Resmi" class="product-image">
+            <button class="favorite-icon" title="Favorilere Ekle">❤️</button>
+            <div class="product-info">
+                <h3 class="product-name">Fermuarlı Turkuaz Ceket</h3>
+                <p class="product-price">₺1549,99 </p>
+            </div>
+
+            <div class="size-selector">
+                <label for="size">Beden:</label>
+                <select id="size" name="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <p id="star" title="Beğeni Oranı"> ⭐⭐⭐⭐⭐ </p>
+            </div>
+
+            <button class="add-to-cart-btn btn btn-dark"
+                onclick="addToCart('Fermuarlı Turkuaz Ceket', '₺1549,99', 'shoppingcardsMAN/ManCeket2.jpg')">
+                Sepete Ekle
+            </button>
+
+            <button class="view-details-btn"
+                onclick="openProductDetail('Fermuarlı Turkuaz Ceket', '₺1549,99', 'shoppingcardsMAN/ManCeket2.jpg','-----Bileşen: %100 Naylon – Astar: %100 Polyester----- Canlı turkuaz rengiyle enerjik bir görünüm sunan bu ceket, sportif ve şık bir alternatif arayanlar için tasarlandı. Hafif yapısı ve nefes alan kumaşıyla mevsim geçişlerinde ideal bir dış giyim ürünüdür. Farklı kombinlerle kolayca uyum sağlar, stilinize canlılık katar.')">
+                Ürünü İncele
+            </button>
+
+            <p class="favorite-message" style="display: none; color: green;">Favorilerime Eklendi!</p>
+        </div>
+
+        <!-- Ürün Detaylarını Gösteren Modal -->
+        <div id="productDetailModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h3 id="modal-product-name"></h3>
+                <p id="modal-product-price"></p>
+
+                <!-- Resim ve açıklamanın yan yana yer alacağı container -->
+                <div class="modal-product-details">
+                    <img id="modal-product-image" class="modal-product-image" src="" alt="Ürün Detay Resmi">
+                    <p id="modal-product-description"></p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="product-card">
+            <img src="shoppingcardsMAN/ManGomlek.jpg" alt="Ürün Resmi" class="product-image">
+            <button class="favorite-icon" title="Favorilere Ekle">❤️</button>
+            <div class="product-info">
+                <h3 class="product-name">Pamuklu Mavi Keten Gömlek</h3>
+                <p class="product-price">₺1249,99 </p>
+            </div>
+
+            <div class="size-selector">
+                <label for="size">Beden:</label>
+                <select id="size" name="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <p id="star" title="Beğeni Oranı"> ⭐⭐⭐⭐⭐ </p>
+            </div>
+
+            <button class="add-to-cart-btn btn btn-dark"
+                onclick="addToCart('Pamuklu Mavi Keten Gömlek', '₺1249,99', 'shoppingcardsMAN/ManGomlek.jpg')">
+                Sepete Ekle
+            </button>
+
+            <button class="view-details-btn"
+                onclick="openProductDetail('Pamuklu Mavi Keten Gömlek', '₺1249,99', 'shoppingcardsMAN/ManGomlek.jpg','-----Bileşen: %55 Keten, %45 Pamuk----- Yüzde yüz pamuk içeriği ve keten dokusuyla sıcak havalarda serin tutan bu gömlek, mavi rengiyle ferah bir görünüm sunar. Hem iş ortamında hem günlük kombinlerde rahatlıkla kullanılabilir. Doğal kumaşı sayesinde cilt dostudur ve terletmez.')">
+                Ürünü İncele
+            </button>
+
+            <p class="favorite-message" style="display: none; color: green;">Favorilerime Eklendi!</p>
+        </div>
+
+        <!-- Ürün Detaylarını Gösteren Modal -->
+        <div id="productDetailModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h3 id="modal-product-name"></h3>
+                <p id="modal-product-price"></p>
+
+                <!-- Resim ve açıklamanın yan yana yer alacağı container -->
+                <div class="modal-product-details">
+                    <img id="modal-product-image" class="modal-product-image" src="" alt="Ürün Detay Resmi">
+                    <p id="modal-product-description"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="shoppingcardsWOMAN/w7.jpg" alt="Ürün Resmi" class="product-image">
+            <button class="favorite-icon" title="Favorilere Ekle">❤️</button>
+            <div class="product-info">
+                <h3 class="product-name">Dokulu Kışlık Kadın Ceket</h3>
+                <p class="product-price">₺2799,99</p>
+            </div>
+
+            <div class="size-selector">
+                <label for="size">Beden:</label>
+                <select id="size" name="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <p id="star" title="Beğeni Oranı"> ⭐⭐⭐⭐⭐ </p>
+            </div>
+
+            <button class="add-to-cart-btn btn btn-dark"
+                onclick="addToCart('Dokulu Kışlık Kadın Ceket', '₺2799,99', 'shoppingcardsWOMAN/w7.jpg')">
+                Sepete Ekle
+            </button>
+
+            <button class="view-details-btn"
+                onclick="openProductDetail('Dokulu Kışlık Kadın Ceket', '₺2799,99', 'shoppingcardsWOMAN/w7.jpg','-----Bileşen: Dış: %100 Polyester, İç: %100 Akrilik-----Soğuk günlerde sıcaklık ve konfor sunan Dokulu Kışlık Kadın Ceket, yumuşak dokusu ve kısa boyuyla şehir şıklığını yakalamanızı sağlar. Sportif ya da casual kombinlerde rahatlıkla tercih edilebilir.')">
+                Ürünü İncele
+            </button>
+
+            <p class="favorite-message" style="display: none; color: green;">Favorilerime Eklendi!</p>
+        </div>
+
+        <!-- Ürün Detaylarını Gösteren Modal -->
+        <div id="productDetailModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h3 id="modal-product-name"></h3>
+                <p id="modal-product-price"></p>
+
+                <!-- Resim ve açıklamanın yan yana yer alacağı container -->
+                <div class="modal-product-details">
+                    <img id="modal-product-image" class="modal-product-image" src="" alt="Ürün Detay Resmi">
+                    <p id="modal-product-description"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="shoppingcardsWOMAN/w6.jpg" alt="Ürün Resmi" class="product-image">
+            <button class="favorite-icon" title="Favorilere Ekle">❤️</button>
+            <div class="product-info">
+                <h3 class="product-name">Bel Kemerli Şık Siyah Mont</h3>
+                <p class="product-price">₺3290,99</p>
+            </div>
+
+            <div class="size-selector">
+                <label for="size">Beden:</label>
+                <select id="size" name="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <p id="star" title="Beğeni Oranı"> ⭐⭐⭐⭐⭐ </p>
+            </div>
+
+            <button class="add-to-cart-btn btn btn-dark"
+                onclick="addToCart('Bel Kemerli Şık Siyah Mont', '₺3290,99', 'shoppingcardsWOMAN/w6.jpg')">
+                Sepete Ekle
+            </button>
+
+            <button class="view-details-btn"
+                onclick="openProductDetail('Bel Kemerli Şık Siyah Mont', '₺3290,99', 'shoppingcardsWOMAN/w6.jpg','-----Bileşen: Dış: %100 Polyester, Astar: %100 Polyester----- Hem sıcak tutan hem de vücut hatlarını belirginleştiren Bel Kemerli Şık Siyah Mont, kış aylarında şıklığınızdan ödün vermeden stil sahibi görünmenizi sağlar. Rüzgar geçirmez dış yapısı ile zorlu hava koşullarında bile koruma sunar.')">
+                Ürünü İncele
+            </button>
+
+            <p class="favorite-message" style="display: none; color: green;">Favorilerime Eklendi!</p>
+        </div>
+
+        <!-- Ürün Detaylarını Gösteren Modal -->
+        <div id="productDetailModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h3 id="modal-product-name"></h3>
+                <p id="modal-product-price"></p>
+
+                <!-- Resim ve açıklamanın yan yana yer alacağı container -->
+                <div class="modal-product-details">
+                    <img id="modal-product-image" class="modal-product-image" src="" alt="Ürün Detay Resmi">
+                    <p id="modal-product-description"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="shoppingcardsMAN/MantTKM.jpg" alt="Ürün Resmi" class="product-image">
+            <button class="favorite-icon" title="Favorilere Ekle">❤️</button>
+            <div class="product-info">
+                <h3 class="product-name">Konforlu Takım Blazer</h3>
+                <p class="product-price">₺3149,99 </p>
+            </div>
+
+            <div class="size-selector">
+                <label for="size">Beden:</label>
+                <select id="size" name="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <p id="star" title="Beğeni Oranı"> ⭐⭐⭐⭐⭐ </p>
+            </div>
+
+            <button class="add-to-cart-btn btn btn-dark"
+                onclick="addToCart('Konforlu Takım Blazer', '₺3149,99', 'shoppingcardsMAN/MantTKM.jpg')">
+                Sepete Ekle
+            </button>
+
+            <button class="view-details-btn"
+                onclick="openProductDetail('Konforlu Takım Blazer', '₺3149,99', 'shoppingcardsMAN/MantTKM.jpg','-----Bileşen: %65 Polyester, %32 Viskon, %3 Elastan----- Resmiyet ile rahatlığı buluşturan bu blazer ceket, özel günlerde ve ofis ortamında şık bir tercih sunar. Esnek yapısı ve hafif kumaşı sayesinde uzun saatler boyunca konfor sağlar. Takım pantolonlarla tamamlandığında kusursuz bir görünüm elde edilir.')">
+                Ürünü İncele
+            </button>
+
+            <p class="favorite-message" style="display: none; color: green;">Favorilerime Eklendi!</p>
+        </div>
+
+        <!-- Ürün Detaylarını Gösteren Modal -->
+        <div id="productDetailModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h3 id="modal-product-name"></h3>
+                <p id="modal-product-price"></p>
+
+                <!-- Resim ve açıklamanın yan yana yer alacağı container -->
+                <div class="modal-product-details">
+                    <img id="modal-product-image" class="modal-product-image" src="" alt="Ürün Detay Resmi">
+                    <p id="modal-product-description"></p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="product-card">
+            <img src="shoppingcardsMAN/Man4.jpg" alt="Ürün Resmi" class="product-image">
+            <button class="favorite-icon" title="Favorilere Ekle">❤️</button>
+            <div class="product-info">
+                <h3 class="product-name">Koyu Mavi Şık Kombin</h3>
+                <p class="product-price">₺2149,99 </p>
+            </div>
+
+            <div class="size-selector">
+                <label for="size">Beden:</label>
+                <select id="size" name="size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <p id="star" title="Beğeni Oranı"> ⭐⭐⭐⭐⭐ </p>
+            </div>
+
+            <button class="add-to-cart-btn btn btn-dark"
+                onclick="addToCart('Koyu Mavi Şık Kombin', '₺2149,99', 'shoppingcardsMAN/Man4.jpg')">
+                Sepete Ekle
+            </button>
+
+            <button class="view-details-btn"
+                onclick="openProductDetail('Koyu Mavi Şık Kombin', '₺2149,99', 'shoppingcardsMAN/Man4.jpg','-----Bileşen: %80 Pamuk, %15 Polyester, %5 Elastan----- Şıklığı ve rahatlığı bir arada sunan bu koyu mavi alt-üst takım, günlük stilinize modern bir hava katıyor. Hafif ve esnek kumaşı sayesinde gün boyu konforlu bir kullanım sağlarken, uyumlu üst ve alt parçalarıyla pratik bir kombin kolaylığı sunar. Spor tarzı sevenler için hem evde hem dışarıda giyilebilecek ideal bir seçenektir. Koyu mavinin asil tonu, farklı ayakkabı ve aksesuarlarla kolayca tamamlanabilir.  ')">
+                Ürünü İncele
+            </button>
+
+            <p class="favorite-message" style="display: none; color: green;">Favorilerime Eklendi!</p>
+        </div>
+
+        <!-- Ürün Detaylarını Gösteren Modal -->
+        <div id="productDetailModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h3 id="modal-product-name"></h3>
+                <p id="modal-product-price"></p>
+
+                <!-- Resim ve açıklamanın yan yana yer alacağı container -->
+                <div class="modal-product-details">
+                    <img id="modal-product-image" class="modal-product-image" src="" alt="Ürün Detay Resmi">
+                    <p id="modal-product-description"></p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <footer>
+
+        <div class="footer">
+
+            <div class="footer-column">
+                <h1 class="cm-baslik">Sayfa Bağlantıları</h1><br>
+                <a href="index.html">Ana Sayfa</a><br><br>
+                <a href="hakkimizda.html">Hakkımızda</a><br><br>
+                <a href="anket.html">Anket</a><br><br>
+                <a href="#ust">Sayfanın Başına Dön</a><br>
+
+            </div>
+
+            <div class="footer-column">
+                <h1 class="cm-baslik">Bize Ulaşın</h1><br>
+                <p class="cm-p"> <i class="fab fa-whatsapp" title="Whatsapp İletişim Hattı"></i> +90 543 512 04 15</p>
+                <p class="cm-p"><i class="fas fa-envelope" title="Mail İletişim"></i> msgiyim@gmail.com</p>
+                <a href="https://www.instagram.com/mustafa_slvtp/" class="cm-a" target="_blank"><i
+                        class="fab fa-instagram" title="Instagram İletişim"></i>mustafa_slvtp</a>
+            </div>
+
+
+            <div class="footer-column">
+                <h1 class="cm-baslik"> Ödeme Yöntemleri</h1><br>
+
+                <div class="payment-images">
+                    <img src="payimages/pay1.png" alt="Ödeme Yöntemleri">
+                    <img src="payimages/pay3.png" alt="Ödeme Yöntemleri">
+                    <img src="payimages/pay4.png" alt="Ödeme Yöntemleri">
+                    <img src="payimages/pay5.png" alt="Ödeme Yöntemleri">
+                </div>
+            </div>
+
+
+            <div class="footer-column">
+
+
+                <div class="rsmft">
+                    <img src="images/sds.png" style="width:70px" alt="Bilgilendirme Resimi">
+                    <p class="imgp">Hızlı Teslimat Garantisi !</p>
+                    <img src="images/2a2b0949-33a4-4fe0-b6ef-f67394e6ae16.png" style="width:70px"
+                        alt="Bilgilendirme Resimi">
+                    <p class="imgp">30 Gün İçerisinde İade-Değişim Hakkı</p>
+
+                </div>
+            </div>
+
+
+            <div class="footer-column">
+
+                <h1 class="cm-s">ÜLKE / DİL</h1>
+                <p class="cm-s"><i class="fas fa-globe"></i> TÜRKİYE/TÜRKÇE</p>
+
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        // Favorilere ekleme işlevi
+        const favoriteButtons = document.querySelectorAll('.favorite-icon');
+
+        favoriteButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const productCard = e.target.closest('.product-card');
+                const productName = productCard.querySelector('.product-name').innerText;
+                const productPrice = productCard.querySelector('.product-price').innerText;
+                const productImage = productCard.querySelector('.product-image').src;
+
+                const product = {
+                    name: productName,
+                    price: productPrice,
+                    image: productImage
+                };
+
+                let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+                // Ürün daha önce favorilere eklenmiş mi kontrol et
+                const isAlreadyFavorite = favorites.some(item => item.name === product.name && item.price === product.price);
+
+                const favoriteMessage = productCard.querySelector('.favorite-message');
+
+                if (isAlreadyFavorite) {
+                    // Zaten eklenmişse uyarı ver
+                    favoriteMessage.innerText = 'Bu ürün zaten favorilerde!';
+                    favoriteMessage.style.color = 'orange';
+                } else {
+                    // Yeni ürün ekleniyor
+                    favorites.push(product);
+                    localStorage.setItem('favorites', JSON.stringify(favorites));
+                    e.target.style.color = 'red';  // Kalp kırmızı olur
+
+                    favoriteMessage.innerText = 'Favorilerime Eklendi!';
+                    favoriteMessage.style.color = 'green';
+                }
+
+                // Mesajı göster ve 2 saniye sonra gizle
+                favoriteMessage.style.display = 'block';
+                setTimeout(() => {
+                    favoriteMessage.style.display = 'none';
+                }, 2000);
+            });
+        });
+
+        // Sepete ürün ekleme fonksiyonu
+        function addToCart(productName, productPrice, productImage) {
+            const product = {
+                name: productName,
+                price: productPrice,
+                image: productImage,
+
+            };
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert('Ürün sepete eklendi!');
+
+            // Sepet sayfasına yönlendir
+            window.location.href = 'sepetim.html';  // Sepet sayfasına yönlendirme
+        }
+
+        function openProductDetail(productName, productPrice, productImage, productDescription) {
+            document.getElementById('modal-product-name').textContent = productName;
+            document.getElementById('modal-product-price').textContent = productPrice;
+            document.getElementById('modal-product-image').src = productImage;
+            document.getElementById('modal-product-description').textContent = productDescription;
+            document.getElementById('productDetailModal').style.display = "block";
+        }
+
+
+        function closeModal() {
+            document.getElementById('productDetailModal').style.display = "none";
+        }
+
+        // Modal dışında tıklayınca kapansın
+        window.onclick = function (event) {
+            var modal = document.getElementById('productDetailModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+
+        // Arama kutusunu aç/kapat
+document.querySelector(".fa-search").addEventListener("click", function () {
+    const input = document.getElementById("searchInput");
+    input.classList.toggle("visible");
+
+    if (input.classList.contains("visible")) {
+        input.focus();
+    }
+});
+
+// Ürün listesi
+const urunler = [
+    { ad: "Kadın Pantolon", sayfa: "pantolonlar.html" },
+    { ad: "Erkek Ceket", sayfa: "ceketler.html" },
+    { ad: "Tişört", sayfa: "tisortler.html" },
+    { ad: "Mont", sayfa: "montlar.html" },
+    { ad: "Elbise", sayfa: "elbiseler.html" }
+];
+
+// Enter tuşuna basıldığında arama yap
+document.getElementById("searchInput").addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+        const aranan = e.target.value.toLowerCase();
+        const eslesen = urunler.find(u => u.ad.toLowerCase().includes(aranan));
+        
+        if (eslesen) {
+            window.location.href = eslesen.sayfa;
+        } else {
+            alert("Ürün bulunamadı.");
+        }
+    }
+});
+    </script>
+
+
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
